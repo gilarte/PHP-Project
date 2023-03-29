@@ -49,6 +49,10 @@ button:hover span{
 button:active{
     transform: scale(0.9);
 }
+
+label{
+    color: #fff;
+}
         </style>
     </head>
     <body class="antialiased">
