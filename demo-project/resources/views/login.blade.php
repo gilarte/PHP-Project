@@ -929,12 +929,8 @@
         <form method="post" style="width: 40%; text-align: center;">
             @csrf
             <div style="color: #9500ff;">
-                <h1 style="font-size: 50px; width: 400px;" class="cartel-luminoso parpadeo"> REGISTER </h1>
+                <h1 style="font-size: 50px; width: 400px;" class="cartel-luminoso parpadeo"> LOGIN </h1>
             </div>
-            <label class="cartel-luminoso" style="font-size: 20px; color: #7a4eff; margin-right: 180px;">Name:</label><br>
-            <input type="text" name="nombre" style="text-align: center; width: 240px;"><br><br>
-            <label class="cartel-luminoso" style="font-size: 20px; color: #7a4eff; margin-right: 145px;">Surnames:</label><br>
-            <input type="text" name="nombre" style="text-align: center; width: 240px;"><br><br>
             <label class="cartel-luminoso" style="font-size: 20px; color: #7a4eff; margin-right: 185px;">Email:</label><br>
             <input type="email" name="email" style="text-align: center; width: 240px;"><br><br>
             <label class="cartel-luminoso" style="font-size: 20px; color: #7a4eff; margin-right: 150px;">Password:</label><br>
