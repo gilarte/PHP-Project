@@ -855,7 +855,7 @@
         }
 
         .parpadeo {
-            animation: parpadeo 1s forwards;
+            animation: parpadeo 1.5s forwards;
         }
 
         @keyframes parpadeo {
@@ -923,27 +923,28 @@
     </style>
 </head>
 
-<body class="antialiased">
+<body class="antialiased"> 
 
-    <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
-        <form method="post" style="width: 40%; text-align: center;">
+    <div style="background-color: #111827" class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
+        
+        <form action="{{route('register.store')}}" method="POST" style="width: 40%; text-align: center;">
             @csrf
             <div style="color: #9500ff;">
                 <h1 style="font-size: 50px; width: 400px;" class="cartel-luminoso parpadeo"> REGISTER </h1>
             </div>
             <label class="cartel-luminoso" style="font-size: 20px; color: #7a4eff; margin-right: 180px;">Name:</label><br>
-            <input type="text" name="nombre" style="text-align: center; width: 240px;"><br><br>
+            <input type="text" name="nombre" style="text-align: center; width: 240px; border-width: 5px; border-color: rgb(51, 51, 201); border-radius: 12px"><br><br>
             <label class="cartel-luminoso" style="font-size: 20px; color: #7a4eff; margin-right: 145px;">Surnames:</label><br>
-            <input type="text" name="nombre" style="text-align: center; width: 240px;"><br><br>
+            <input type="text" name="nombre" style="text-align: center; width: 240px; border-width: 5px; border-color: rgb(51, 51, 201); border-radius: 12px"><br><br>
             <label class="cartel-luminoso" style="font-size: 20px; color: #7a4eff; margin-right: 185px;">Email:</label><br>
-            <input type="email" name="email" style="text-align: center; width: 240px;"><br><br>
+            <input type="email" name="email" style="text-align: center; width: 240px; border-width: 5px; border-color: rgb(51, 51, 201); border-radius: 12px"><br><br>
             <label class="cartel-luminoso" style="font-size: 20px; color: #7a4eff; margin-right: 150px;">Password:</label><br>
-            <input type="password" name="contrasena" style="text-align: center; width: 240px;"><br><br>
+            <input type="password" name="contrasena" style="text-align: center; width: 240px; border-width: 5px; border-color: rgb(51, 51, 201); border-radius: 12px"><br><br>
             <button style="margin-left: 235px;">
-                <span><input type="submit" value="">Registrarse</span>
+                <span><input type="submit" value="">Sign up</span>
             </button>
             <button style="margin-left: 500px;">
-                <a href="/">Volver</a>
+                <a href="/">  Back  </a>
             </button>
         </form>
     </div>
