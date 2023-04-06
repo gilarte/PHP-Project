@@ -1,10 +1,10 @@
 <?php
 
+use App\Cuenta;
+use App\Http\Controllers\CuentaController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\RegisController;
-use App\Http\Controllers\LogController;
-use Faker\Guesser\Name;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,21 +17,46 @@ use Faker\Guesser\Name;
 |
 */
 
-/*
 Route::get('/', function () {
     return view('welcome');
 });
-*/
+
+Route::resource('transactions', App\Http\Controllers\TransactionController::class);
+Route::resource('cuentas', App\Http\Controllers\CuentaController::class);
+
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+
+
+//Accounts
+Route::get('/cuenta', [CuentaController::class, 'index'])->name('cuenta');
+Route::delete('/cuenta/{cuenta}', [CuentaController::class, 'destroy'])->name('cuenta.destroy');
+
 /*
-Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login']);
-Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
+Route::get('/cuenta', function () {
+    return view('cuenta/index', ["cuentas"=>[]]);
+})->name('cuenta');
 
-Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register');
-Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class, 'register']);
+Route::middleware('auth')->group(function () {
+    Route::get('/cuenta', [CuentaController::class, 'index'])->name('cuenta.index');
+    Route::get('/cuenta', [CuentaController::class, 'create'])->name('cuenta.create');
+    Route::get('/cuenta', [CuentaController::class, 'edit'])->name('cuenta.edit');
+});
 */
 
-Route::get('/', HomeController::class);
-Route::get('/regis', [RegisController::class, 'index']);
-Route::post('/regis', [RegisController::class, 'store'])->name('register.store');
-Route::get('/log', [LogController::class, 'index']);
+//Transactions
+Route::get('/transaction', [TransactionController::class, 'index'])->name('transaction');
+
+
+
+//Profile
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
