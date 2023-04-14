@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Cuenta;
 use App\Transaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class TransactionController
@@ -30,10 +32,12 @@ class TransactionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create()    
     {
+        $user = Auth::user();
+        $accounts = Cuenta::query()->where('user_id', $user->id)->get();
         $transaction = new Transaction();
-        return view('transaction/create', compact('transaction'));
+        return view('transaction/create', compact('transaction', 'accounts'));
     }
 
     /**

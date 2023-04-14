@@ -49,6 +49,7 @@ Route::middleware('auth')->group(function () {
 
 //Transactions
 Route::get('/transaction', [TransactionController::class, 'index'])->name('transaction');
+Route::get('/transaction/create/{AccountNumber}', [TransactionController::class, 'create'])->name('transaction.create');
 
 
 
