@@ -19,7 +19,7 @@ return new class extends Migration
             $table->enum('type', ['income','shipment']);
             $table->timestamps();
 
-            $table->foreign('AccountNumber')->references('AccountNumber')->on('cuentas')->onDelete('cascade');
+            $table->foreign('AccountNumber')->references('AccountNumber')->on('accounts')->onDelete('cascade');
         });
     }
 

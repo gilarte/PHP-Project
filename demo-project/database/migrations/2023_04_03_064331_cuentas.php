@@ -13,13 +13,13 @@ return new class extends Migration
     {
         //
 
-        Schema::create('cuentas', function (Blueprint $table) {
+        Schema::create('accounts', function (Blueprint $table) {
             $table->engine="InnoDB";
             $table->bigIncrements('AccountNumber');
             $table->double('balance');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('usuarios')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cuentas');
+        Schema::dropIfExists('accounts');
     }
 };

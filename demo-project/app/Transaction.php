@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property $created_at
  * @property $updated_at
  *
- * @property Cuenta $cuenta
+ * @property account $account
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
@@ -40,9 +40,9 @@ class Transaction extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function cuenta()
+    public function account()
     {
-        return $this->hasOne('App\Cuenta', 'AccountNumber', 'AccountNumber');
+        return $this->hasOne('App\account', 'AccountNumber', 'AccountNumber');
     }
     
 

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Cuenta;
+use App\Account;
 use App\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,8 +20,8 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        $modelo = new Transaction;
-        $transactions = $modelo->paginate();
+        $model = new Transaction;
+        $transactions = $model->paginate();
 
         return view('transaction/index', compact('transactions'))
             ->with('i', (request()->input('page', 1) - 1) * $transactions->perPage());
@@ -35,7 +35,7 @@ class TransactionController extends Controller
     public function create()
     {
         $user = Auth::user();
-        $accounts = Cuenta::query()->where('user_id', $user->id)->get();
+        $accounts = Account::query()->where('user_id', $user->id)->get();
         $transaction = new Transaction();
         return view('transaction/create', compact('transaction', 'accounts'));
     }
@@ -51,8 +51,8 @@ class TransactionController extends Controller
     {
         request()->validate(Transaction::$rules);
 
-        $modelo = new Transaction;
-        $transaction = $modelo->create($request->all());
+        $model = new Transaction;
+        $transaction = $model->create($request->all());
 
         return redirect()->route('transactions.index')
             ->with('success', 'Transaction created successfully.');
@@ -66,8 +66,8 @@ class TransactionController extends Controller
      */
     public function show($id)
     {
-        $modelo = new Transaction;
-        $transaction = $modelo->find($id);
+        $model = new Transaction;
+        $transaction = $model->find($id);
 
         return view('transaction.show', compact('transaction'));
     }
@@ -80,8 +80,8 @@ class TransactionController extends Controller
      */
     public function edit($id)
     {
-        $modelo = new Transaction;
-        $transaction = $modelo->find($id);
+        $model = new Transaction;
+        $transaction = $model->find($id);
 
         return view('transaction.edit', compact('transaction'));
     }
@@ -110,8 +110,8 @@ class TransactionController extends Controller
      */
     public function destroy($id)
     {
-        $modelo = new Transaction;
-        $transaction = $modelo->find($id)->delete();
+        $model = new Transaction;
+        $transaction = $model->find($id)->delete();
 
         return redirect()->route('transactions.index')
             ->with('success', 'Transaction deleted successfully');

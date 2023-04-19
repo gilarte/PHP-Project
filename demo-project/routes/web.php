@@ -1,7 +1,7 @@
 <?php
 
-use App\Cuenta;
-use App\Http\Controllers\CuentaController;
+use App\Account;
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
@@ -22,7 +22,7 @@ Route::get('/', function () {
 });
 
 Route::resource('transactions', App\Http\Controllers\TransactionController::class);
-Route::resource('cuentas', App\Http\Controllers\CuentaController::class);
+Route::resource('accounts', App\Http\Controllers\AccountController::class);
 
 
 Route::get('/dashboard', function () {
@@ -32,20 +32,8 @@ Route::get('/dashboard', function () {
 
 
 //Accounts
-Route::get('/cuenta', [CuentaController::class, 'index'])->name('cuenta');
-Route::delete('/cuenta/{cuenta}', [CuentaController::class, 'destroy'])->name('cuenta.destroy');
-
-/*
-Route::get('/cuenta', function () {
-    return view('cuenta/index', ["cuentas"=>[]]);
-})->name('cuenta');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/cuenta', [CuentaController::class, 'index'])->name('cuenta.index');
-    Route::get('/cuenta', [CuentaController::class, 'create'])->name('cuenta.create');
-    Route::get('/cuenta', [CuentaController::class, 'edit'])->name('cuenta.edit');
-});
-*/
+Route::get('/account', [AccountController::class, 'index'])->name('account');
+Route::delete('/account/{account}', [AccountController::class, 'destroy'])->name('account.destroy');
 
 //Transactions
 Route::get('/transaction', [TransactionController::class, 'index'])->name('transaction');

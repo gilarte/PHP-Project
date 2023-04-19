@@ -12,7 +12,7 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('cuenta')" :active="request()->routeIs('cuenta')">
+                    <x-nav-link :href="route('account')" :active="request()->routeIs('account')">
                         {{ __('Accounts') }}
                     </x-nav-link>
                     <x-nav-link :href="route('transaction')" :active="request()->routeIs('transaction')">
