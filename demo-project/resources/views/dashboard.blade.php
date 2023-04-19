@@ -4,7 +4,9 @@
             {{ __('Home') }}
         </h2>
         <hr>
+        
         <br>
+        
         <body>
             <div style="background-color: #111827; border-radius: 30px; height: 600px;">
                 <br>

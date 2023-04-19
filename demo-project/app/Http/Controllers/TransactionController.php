@@ -32,7 +32,7 @@ class TransactionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()    
+    public function create()
     {
         $user = Auth::user();
         $accounts = Cuenta::query()->where('user_id', $user->id)->get();
@@ -45,6 +45,7 @@ class TransactionController extends Controller
      *
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
+     * 
      */
     public function store(Request $request)
     {
