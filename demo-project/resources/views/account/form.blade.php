@@ -17,20 +17,15 @@
         <br>
         <div class="form-group" style="width:25%; margin-left: 500px; color: white">
             {{ Form::label('AccountNumber') }}
-            {{ Form::text('AccountNumber', $account->AccountNumber, ['class' => 'form-control' . ($errors->has('AccountNumber') ? ' is-invalid' : ''), 'placeholder' => 'Accountnumber']) }}
+            {{ Form::text('AccountNumber', $account->AccountNumber, ['class' => 'form-control' . ($errors->has('AccountNumber') ? ' is-invalid' : ''), 'placeholder' => 'Accountnumber', 'required']) }}
             {!! $errors->first('AccountNumber', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group" style="width:25%; margin-left: 500px; color: white;">
             {{ Form::label('balance') }}
-            {{ Form::text('balance', $account->balance, ['class' => 'form-control' . ($errors->has('balance') ? ' is-invalid' : ''), 'placeholder' => 'Balance']) }}
+            {{ Form::text('balance', $account->balance, ['class' => 'form-control' . ($errors->has('balance') ? ' is-invalid' : ''), 'placeholder' => 'Balance', 'required']) }}
             {!! $errors->first('balance', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-        <div class="form-group" style="width:25%; margin-left: 500px; color: white;">
-            {{ Form::label('user_id') }}
-            {{ Form::text('user_id', $account->user_id, ['class' => 'form-control' . ($errors->has('user_id') ? ' is-invalid' : ''), 'placeholder' => 'User Id']) }}
-            {!! $errors->first('user_id', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
-
+        {{ Form::hidden('user_id', auth()->user()->id) }}
     </div>
     <div class="box-footer mt20" style="margin-left: 640px; margin-top: 50px">
         <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>

@@ -33,6 +33,7 @@ Route::get('/dashboard', function () {
 
 //Accounts
 Route::get('/account', [AccountController::class, 'index'])->name('account');
+Route::put('/account/{account}', [AccountController::class, 'update'])->name('accounts.update');
 Route::delete('/account/{account}', [AccountController::class, 'destroy'])->name('account.destroy');
 
 //Transactions

@@ -15,13 +15,12 @@
                     <div class="card-header">
                         <span class="card-title">{{ __('Update') }} account</span>
                     </div>
-                    <div class="card-body">
-                        <form method="POST" action="{{ route('accounts.update', $account->id) }}"  role="form" enctype="multipart/form-data">
-                            {{ method_field('PATCH') }}
+                    <div class="card-body">                      
+                        <form method="POST" action="{{ route('accounts.update', $account->AccountNumber) }}"  role="form" enctype="multipart/form-data">
+                            {{ method_field('PUT') }}
                             @csrf
-
+                        
                             @include('account.form')
-
                         </form>
                     </div>
                 </div>

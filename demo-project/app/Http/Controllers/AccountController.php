@@ -45,11 +45,18 @@ class AccountController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Account::$rules);
-
-        $model = new Account;
-        $account = $model->create($request->all());
-
+        $request->validate([
+            'AccountNumber' => 'required|min:5',
+            'balance' => 'required',
+        ]);
+    
+        $account = new Account();
+        $account->AccountNumber = $request->get('AccountNumber');
+        $account->balance = $request->get('balance');
+        $account->user_id = Auth::id();
+    
+        $account->save();
+    
         return redirect()->route('accounts.index')
             ->with('success', 'Account created successfully.');
     }
@@ -75,11 +82,12 @@ class AccountController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        $model = new Account;
-        $account = $model->find($id);
-        return view('account.edit', compact('account'));
-    }
+{
+    $model = new Account;
+    $account = $model->find($id);
+    return view('account.edit', compact('account'));
+}
+
 
     /**
      * Update the specified resource in storage.
