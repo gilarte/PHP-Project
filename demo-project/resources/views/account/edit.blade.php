@@ -16,7 +16,7 @@
                         <span class="card-title">{{ __('Update') }} account</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('accounts.update', ['account' => $account->AccountNumber]) }}">
+                        <form method="POST" action="{{ route('accounts.update', $account->id) }}"  role="form" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             @csrf
 

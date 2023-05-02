@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Account;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 /**
  * Class accountController
@@ -19,7 +21,7 @@ class AccountController extends Controller
     public function index()
     {
         $model = new Account;
-        $accounts = $model->paginate();
+        $accounts = Account::where('user_id', Auth::user()->id)->paginate(5);
         return view('account/index', compact('accounts'))
             ->with('i', (request()->input('page', 1) - 1) * $accounts->perPage());
     }
