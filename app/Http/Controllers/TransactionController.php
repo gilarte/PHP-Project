@@ -21,8 +21,13 @@ class TransactionController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $account = $user->account;
-        $transactions = $account->transactions;
+
+        $accounts = Account::where('user_id', $user->id)->get();
+
+        $transactions = Transaction::whereHas('account', function ($query) use ($accounts) {
+        $query->whereIn('AccountNumber', $accounts->pluck('AccountNumber'));
+        })->paginate(10);
+
         return view('transaction/index', compact('transactions'))
             ->with('i', (request()->input('page', 1) - 1) * $transactions->perPage());
     }
