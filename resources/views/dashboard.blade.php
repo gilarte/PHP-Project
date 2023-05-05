@@ -10,11 +10,15 @@
         <body>
             <div style="background-color: #111827; border-radius: 30px; height: 600px;">
                 <br>
-                <h1 style="text-align: center; font-size: 28px; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; color: #44adea">Welcome!</h1>
+                <h1 style="text-align: center; font-size: 50px; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; color: #44adea">Welcome!</h1>
+                <hr style="margin-left: 300px; width:50%">
                 <br>
-                <h2 style="margin-left: 100px; font-family: console; font-size: 20px; color: rgb(135, 135, 255)">   </h2>
+                <br>
+                <h2 style="text-align: center; font-family: console; font-size: 30px; color: rgb(135, 135, 255)"> Total balance:  </h2>
+                <br>
+                <h2 style="text-align: center; font-family: console; font-size: 30px; color: rgb(135, 135, 255)">{{ $sumaSaldo }}€</h2>
             </div>
-        </body>
+        </body>
     </x-slot>
 
     <div class="py-12">

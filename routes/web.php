@@ -26,7 +26,10 @@ Route::resource('accounts', App\Http\Controllers\AccountController::class);
 
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $user = Auth::user();
+    $cuentas = Account::where('user_id', $user->id)->get();
+    $sumaSaldo = $cuentas->sum('balance');
+    return view('dashboard', ['sumaSaldo' => $sumaSaldo]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
