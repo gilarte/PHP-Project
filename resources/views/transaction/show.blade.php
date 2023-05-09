@@ -65,8 +65,8 @@
                         <hr style="width: 50%">
                         <br>
                         <div class="form-group">
-                            <strong><u>Type:</u></strong>
-                            <p>{{ $transaction->type }}</p>
+                            <strong><u>Date:</u></strong>
+                            <p>{{ $transaction->created_at }}</p>
                         </div>
 
                     </div>

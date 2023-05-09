@@ -13,11 +13,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     
-    <style>
-        th{
-            color: white
-        }
-    </style>
+    
 </head>
 <div style="width: 85%; text-align: left; margin-left: 8%">
     <br>
@@ -55,7 +51,7 @@
                         <div class="table-responsive">
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
-                                    <tr>
+                                    <tr style="color: white">
                                         <th>No</th>
                                         
 										<th>Accountnumber</th>
@@ -67,7 +63,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($transactions as $transaction)
-                                        <tr>
+                                        <tr style="background-color: white">
                                             <td>{{ $transaction->id }}</td>
                                             
 											<td>{{ $transaction->AccountNumber }}</td>
