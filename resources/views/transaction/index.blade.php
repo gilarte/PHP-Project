@@ -59,8 +59,8 @@
                                         <th>No</th>
                                         
 										<th>Accountnumber</th>
+                                        <th>Account-Destination</th>
 										<th>Amount</th>
-										<th>Type</th>
 
                                         <th></th>
                                     </tr>
@@ -71,8 +71,8 @@
                                             <td>{{ $transaction->id }}</td>
                                             
 											<td>{{ $transaction->AccountNumber }}</td>
+                                            <td>{{ $transaction->AccountNumberD }}</td>
 											<td>{{ $transaction->amount }}</td>
-											<td>{{ $transaction->type }}</td>
 
                                             <td>
                                                 <form action="{{ route('transactions.destroy',$transaction->id) }}" method="POST">

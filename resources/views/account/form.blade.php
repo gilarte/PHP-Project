@@ -17,12 +17,12 @@
         <br>
         <div class="form-group" style="width:25%; margin-left: 500px; color: white">
             {{ Form::label('AccountNumber') }}
-            {{ Form::text('AccountNumber', $account->AccountNumber, ['class' => 'form-control' . ($errors->has('AccountNumber') ? ' is-invalid' : ''), 'placeholder' => 'Accountnumber', 'required']) }}
+            {{ Form::text('AccountNumber', $account->AccountNumber, ['class' => 'form-control' . ($errors->has('AccountNumber') ? ' is-invalid' : ''), 'placeholder' => 'Accountnumber', 'required', 'pattern' => '[0-9]+']) }}
             {!! $errors->first('AccountNumber', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group" style="width:25%; margin-left: 500px; color: white;">
             {{ Form::label('balance') }}
-            {{ Form::text('balance', $account->balance, ['class' => 'form-control' . ($errors->has('balance') ? ' is-invalid' : ''), 'placeholder' => 'Balance', 'required']) }}
+            {{ Form::text('balance', $account->balance, ['class' => 'form-control' . ($errors->has('balance') ? ' is-invalid' : ''), 'placeholder' => 'Balance', 'required', 'pattern' => '^[0-9]+(\.[0-9]{1,2})?$']) }}
             {!! $errors->first('balance', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         {{ Form::hidden('user_id', auth()->user()->id) }}

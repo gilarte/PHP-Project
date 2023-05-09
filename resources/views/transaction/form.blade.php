@@ -44,15 +44,16 @@
             {!! $errors->first('AccountNumber', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group" style="width:25%; margin-left: 500px; color: white">
+            {{ Form::label('AccountNumberD', 'Destination Account Number *') }}
+            {{ Form::select('AccountNumberD', $accounts->pluck('AccountNumber', 'AccountNumber')->except($transaction->AccountNumber), null, ['class' => 'form-control' . ($errors->has('AccountNumberD') ? ' is-invalid' : ''), 'placeholder' => 'Select destination account', 'required']) }}
+            {!! $errors->first('AccountNumberD', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
+        <div class="form-group" style="width:25%; margin-left: 500px; color: white">
             {{ Form::label('amount') }}
             {{ Form::number('amount', $transaction->amount, ['class' => 'form-control' . ($errors->has('amount') ? ' is-invalid' : ''), 'placeholder' => 'Amount', 'step' => '0.01', 'min' => '0']) }}
             {!! $errors->first('amount', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-        <div class="form-group" style="width:25%; margin-left: 500px; color: white">
-            {{ Form::label('type') }}
-            {{ Form::select('type', ['' => 'Select transaction type', 'income' => 'income', 'shipment' => 'shipment'], $transaction->type ?? null, ['class' => 'form-control' . ($errors->has('type') ? ' is-invalid' : ''), 'required']) }}
-            {!! $errors->first('type', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
+        
 
     </div>
     <div class="box-footer mt20" style="margin-left: 610px; margin-top: 50px">

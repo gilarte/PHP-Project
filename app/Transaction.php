@@ -23,8 +23,8 @@ class Transaction extends Model
     
     static $rules = [
 		'AccountNumber' => 'required',
+    'AccountNumberD' => 'required|different:AccountNumber',
 		'amount' => 'required',
-		'type' => 'required',
     ];
 
     protected $perPage = 20;
@@ -34,7 +34,7 @@ class Transaction extends Model
      *
      * @var array
      */
-    protected $fillable = ['AccountNumber','amount','type'];
+    protected $fillable = ['AccountNumber','AccountNumberD','amount'];
 
 
     /**

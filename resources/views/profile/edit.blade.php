@@ -1,29 +1,35 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Profile') }}
-        </h2>
-    </x-slot>
+@extends('layouts.app')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-profile-information-form')
-                </div>
-            </div>
+@section('template_title')
+    {{ __('Proile') }} Transaction
+@endsection
 
-            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-password-form')
-                </div>
-            </div>
+@section('content')
+    <section class="content container-fluid">
+        <div class="row">
+            <div class="col-md-12">
 
-            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.delete-user-form')
+                @includeif('partials.errors')
+
+                <div class="card card-default">
+
+                    <div class="card-body">
+                        <form method="post" action="{{ route('profile.update') }}"  role="form" enctype="multipart/form-data">
+                            @csrf
+                            <h1 style="text-align: center">Edit profile</h1>
+                            <hr style="width: 50%; align-content: center">
+                            <br>
+                            <div style="text-align: center">
+                                <label for="fname">First name:</label>
+                                <input type="text" id="fname" value="{{ $user->name}}" name="name"><br><br>
+                                <label for="lname">Email     :</label>
+                                <input type="text" id="email" name="email" value="{{ $user->email}}"><br><br>
+                                <input type="submit" value="Submit">
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</x-app-layout>
+    </section>
+@endsection

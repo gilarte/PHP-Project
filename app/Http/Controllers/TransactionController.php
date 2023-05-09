@@ -6,6 +6,8 @@ use App\Account;
 use App\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+
 
 /**
  * Class TransactionController
@@ -54,14 +56,33 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Transaction::$rules);
+    // Validar los datos de entrada
+    $request->validate(Transaction::$rules);
 
-        $model = new Transaction;
-        $transaction = $model->create($request->all());
+    // Obtener la cuenta de origen
+    $account = Account::where('AccountNumber', $request->AccountNumber)->first();
 
-        return redirect()->route('transactions.index')
-            ->with('success', 'Transaction created successfully.');
+    // Verificar que la cantidad enviada no sea mayor que la cantidad disponible
+    if ($request->amount > $account->balance) {
+        return redirect()->back()->withErrors(['amount' => 'The amount sent cannot be greater than the available balance.'])->withInput();
     }
+
+    // Crear la transacción
+    $transaction = new Transaction($request->all());
+    $transaction->save();
+
+    // Actualizar el balance de la cuenta de origen y la cuenta de destino
+    $account->balance -= $request->amount;
+    $account->save();
+
+    $destination_account = Account::where('AccountNumber', $request->AccountNumberD)->first();
+    $destination_account->balance += $request->amount;
+    $destination_account->save();
+
+    return redirect()->route('transactions.index')
+        ->with('success', 'Transaction created successfully.');
+    }  
+
 
     /**
      * Display the specified resource.

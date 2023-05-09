@@ -15,8 +15,8 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('AccountNumber');
+            $table->unsignedBigInteger('AccountNumberD');
             $table->double('amount');
-            $table->enum('type', ['income','shipment']);
             $table->timestamps();
 
             $table->foreign('AccountNumber')->references('AccountNumber')->on('accounts')->onDelete('cascade');
