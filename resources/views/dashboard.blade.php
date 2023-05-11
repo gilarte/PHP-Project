@@ -16,7 +16,10 @@
                 <br>
                 <h2 style="text-align: center; font-family: console; font-size: 30px; color: rgb(135, 135, 255)"> Total balance:  </h2>
                 <br>
-                <h2 style="text-align: center; font-family: console; font-size: 30px; color: rgb(135, 135, 255)">{{ $sumaSaldo }}€</h2>
+                <h2 style="text-align: center; font-family: console; font-size: 30px; color: rgb(135, 135, 255)">{{ $sumaccounts }}€</h2>
+                @role('admin')
+                <h2 style="text-align: center; font-family: console; font-size: 30px; color: rgb(135, 135, 255)">{{ $sumaccounts2 }}€</h2>
+                @endrole
             </div>
         </body>
     </x-slot>

@@ -46,7 +46,7 @@ class AccountController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'AccountNumber' => 'required|min:5',
+            'AccountNumber' => 'required|unique:accounts|min:5',
             'balance' => 'required',
         ]);
     
